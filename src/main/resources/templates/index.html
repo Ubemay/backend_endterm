@@ -1,0 +1,42 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main.html}">
+
+<div layout:fragment="site_content">
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <table class="table table-stripped">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td th:text="#{label.name}"></td>
+                    <td th:text="#{label.price}">Price</td>
+                    <td th:text="#{label.amount}">Price</td>
+                    <td th:text="#{label.country}">Price</td>
+                    <td th:text="#{label.categories}">Price</td>
+                    <td th:text="#{label.details}">Details</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="it : ${tovary}">
+                    <td th:text="${it.id}"></td>
+                    <td th:text="${it.name}"></td>
+                    <td th:text="${it.price}"></td>
+                    <td th:text="${it.amount}"></td>
+                    <td>
+                        <span th:each="cat : ${it.catigories}" th:text="${cat.name}" style="display: block;">
+
+                        </span>
+                    </td>
+                    <td th:text="${it.country.name}"></td>
+                    <td><a th:href="@{'/details/' + ${it.id}}" class="btn btn-info btn-sm"
+                           th:text="#{label.details}"></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</html>
+

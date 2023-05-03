@@ -1,0 +1,52 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main.html}">
+
+<div layout:fragment="site_content">
+    <div class="row mt-5">
+        <div class="col-6 offset-3">
+            <h3 class="display-1 text-center">ADD ITEM</h3>
+
+            <form th:action="@{'/addItem'}" method="post">
+
+                <div class="form-group">
+                    <label th:text="#{label.name}">
+                    </label>
+                    <input type="text" class="form-control" name="item_name">
+                </div>
+
+                <div class="form-group">
+                    <label th:text="#{label.price}">
+                    </label>
+                    <input type="text" class="form-control" name="item_price" max="10000000" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label th:text="#{label.amount}">
+                    </label>
+                    <input type="text" class="form-control" name="item_amount" max="10000000" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label th:text="#{label.country}">
+                    </label>
+
+                    <select class="form-control" name="country_id">
+                        <option th:each="cnt: ${countries}" th:text="${cnt.name} + ' / ' + ${cnt.code}"
+                                th:value="${cnt.id}">
+
+                        </option>
+                    </select>
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <button class="btn btn-success" th:text="#{button.add}">ADD ITEM</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</html>
+
